@@ -35,4 +35,15 @@ export const queries = {
     "slug": slug.current,
     "category": category->name
   }`,
+  GET_BY_CATEGORY: (
+    category: string
+  ) => `*[_type == "product" && category->name == "${category}"] {
+    _id,
+    "image": image.asset->url,
+    price,
+    name,
+    unit,
+    "slug": slug.current,
+    "category": category->name
+  }`,
 };

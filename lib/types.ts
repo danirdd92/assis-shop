@@ -8,3 +8,8 @@ export type ProductDto = {
   slug: string;
   category: string;
 };
+
+export type CartItem = Pick<
+  ProductDto,
+  "_id" | "name" | "description" | "price" | "image"
+> & { currency: "USD"; sku: string };

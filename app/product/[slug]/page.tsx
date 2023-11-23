@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { client, queries, urlFor } from "@/lib/sanity";
-import type { ProductDto } from "@/lib/types";
 import Image from "next/image";
+import type { ProductDto } from "@/lib/types";
+import { AddToCart } from "@/components/core/addTobag";
 
 async function getProduct(slug: string) {
   const data = (await client.fetch(queries.GET_PROD(slug))) as ProductDto;
@@ -43,6 +44,15 @@ export default async function ProductPage({ params }: Props) {
                 </span>
               </div>
             </div>
+
+            <div className="flex gap-2.5">
+              <AddToCart item={product} currency="USD" />
+              <Button variant="secondary">Checkout now</Button>
+            </div>
+
+            <p className="mt-12 text-base text-gray-500 tracking-wide">
+              {product.description}
+            </p>
           </div>
         </div>
       </div>
